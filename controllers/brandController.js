@@ -1,14 +1,17 @@
+const {Brand} = require("../models/models")
+
 class BrandController {
-    async registration(req, res) {
-        
+    async create(req, res) {
+        const {name} = req.body
+        const type = await Brand.create({name})
+        return res.json(type)
     }
     
-    async login(req, res) {
-
+    async getAll(req, res) {
+        const brands = await Brand.findAll()
+        return res.json(brands)
     }
-    async check(req, res) {
 
-    }
 }
 
 module.exports = new BrandController()
